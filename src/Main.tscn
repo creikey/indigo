@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://resources/debug-floor/debug_floor.material" type="Material" id=1]
 [ext_resource path="res://nodes/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/game-camera/GameCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/game-camera/GameCamera.gd" type="Script" id=4]
+[ext_resource path="res://nodes/enemy/Enemy.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 100, 2, 100 )
@@ -47,3 +48,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 4 )
+
+[node name="Enemy" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.35, 2.53087, 0 )
