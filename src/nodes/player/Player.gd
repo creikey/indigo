@@ -13,6 +13,8 @@ func _physics_process(delta):
 		float(Input.is_action_pressed("g_right")) -\
 		float(Input.is_action_pressed("g_left"))
 	
+	rotation.y = -(get_viewport().size/2.0).angle_to_point(get_viewport().get_mouse_position()) + PI
+	
 	vel += accel*delta
 	
 	vel.x = left_right*10.0

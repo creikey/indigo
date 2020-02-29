@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://resources/debug-floor/debug_floor.material" type="Material" id=1]
 [ext_resource path="res://nodes/player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/game-camera/GameCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/game-camera/GameCamera.gd" type="Script" id=4]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 100, 2, 100 )
@@ -9,11 +11,11 @@ size = Vector3( 100, 2, 100 )
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 50, 1, 50 )
 
-[sub_resource type="ProceduralSky" id=5]
+[sub_resource type="ProceduralSky" id=3]
 
-[sub_resource type="Environment" id=6]
+[sub_resource type="Environment" id=4]
 background_mode = 2
-background_sky = SubResource( 5 )
+background_sky = SubResource( 3 )
 ambient_light_color = Color( 1, 1, 1, 1 )
 ambient_light_energy = 0.2
 ambient_light_sky_contribution = 0.1
@@ -34,9 +36,14 @@ shape = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
+[node name="GameCamera" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 19.174, 0 )
+script = ExtResource( 4 )
+player_path = NodePath("../Player")
+
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.52986, -0.491075, 0.691443, 0, 0.8153, 0.579039, -0.848085, -0.30681, 0.431995, 0, 8.89823, 0 )
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 6 )
+environment = SubResource( 4 )
