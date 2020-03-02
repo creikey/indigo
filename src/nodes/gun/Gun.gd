@@ -11,13 +11,20 @@ func _ready():
 	set_physics_process(false)
 
 func _input(event):
+	if GameState.rewinding:
+		return
 	if event.is_action_pressed("g_fire"):
 		$FireTimer.start()
 		$GunshotPlayer.play()
 		$BulletRayCast.enabled = true
 		set_physics_process(true)
+		var cur_trail = preload("res://nodes/gun/BulletTrail.tscn").instance()
+		get_node("/root/Main/BulletTrails").add_child(cur_trail)
+		cur_trail.global_transform = global_transform
 
 func _physics_process(delta):
+	if GameState.rewinding:
+		return
 	if $BulletRayCast.is_colliding():
 		var collider: PhysicsBody = $BulletRayCast.get_collider()
 		if collider.is_in_group("hittable"):

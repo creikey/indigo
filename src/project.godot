@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "KinematicBody",
+"class": "KinematicRewinder",
+"language": "GDScript",
+"path": "res://nodes/rewinders/KinematicRewinder.gd"
+}, {
+"base": "Resource",
+"class": "RewinderData",
+"language": "GDScript",
+"path": "res://nodes/rewinders/RewinderData.gd"
+} ]
 _global_script_class_icons={
-
+"KinematicRewinder": "",
+"RewinderData": ""
 }
 
 [application]
@@ -18,6 +29,10 @@ _global_script_class_icons={
 config/name="Indigo"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GameState="*res://GameState.gd"
 
 [display]
 
@@ -56,6 +71,11 @@ g_right={
 g_fire={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+g_rewind={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
  ]
 }
 

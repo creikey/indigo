@@ -12,6 +12,7 @@ wait_time = 0.15
 one_shot = true
 
 [node name="BulletRayCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0364852, 0 )
 exclude_parent = false
 cast_to = Vector3( 100, 0, 0 )
 
